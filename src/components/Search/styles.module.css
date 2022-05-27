@@ -1,0 +1,15 @@
+.search {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 10px;
+    margin: 15px;
+    font-size: 14px;
+    outline: none;
+    background-color: white;
+}

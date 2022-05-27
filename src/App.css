@@ -4,10 +4,8 @@
   align-items: center;
   text-align: center;
   flex-direction: column;
-  max-width: 1200px;
-  width: 800px;
-  height: 500px;
   margin: auto;
-  background-color: #fafafa;
+  margin-top: 40px;
+  max-width: 1200px;
 }
 
