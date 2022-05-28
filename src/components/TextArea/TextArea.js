@@ -1,21 +1,25 @@
-import React from "react";
+import {useState} from "react";
 import styles from "./styles.module.css";
-import {changeColor} from '../../redux/color/colorSlice'; //reducer import ettik colors kullanabilmek için.
-import { useSelector} from "react-redux";
+import {changeColor } from '../../redux/color/colorSlice'; //reducer import ettik colors kullanabilmek için.
+import { useSelector, useDispatch} from "react-redux";
+import { addNote } from "../../redux/notes/notesSlice";
 
 function TextArea() {  
+
+  const [text , setText] = useState("");
+  const dispatch = useDispatch();
 
   const changeColor = useSelector(state => state.color.colors); 
   
   return (
     <div className={styles.TextAreaDiv}>
       <textarea
-        name=""
-        id=""
+        value={text} 
         cols="30"
         rows="10"
         placeholder="Not giriniz..."
         className={styles.TextArea}
+        onChange={(e) => setText(e.target.value)}
       ></textarea>
 
       <div className={styles.colorAndBtn}>
@@ -31,7 +35,7 @@ function TextArea() {
       
 
         <div className={styles.addBtnDiv}>
-          <button className={styles.ekleBtn}>Ekle</button>
+          <button className={styles.ekleBtn} onClick = {() => dispatch(addNote({text: text}))}>Ekle</button>
         </div>
 
         </div>
