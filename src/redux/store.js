@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import colorSlice from "./color/colorSlice";
 import notesSlice from "./notes/notesSlice";
 
 
 export const store = configureStore({
     reducer: {
         notes: notesSlice,
+        color: colorSlice,
     },
 });
 //react context api gibi state yönetimi yapıyoruz store'da. tüm bileşenler store yapısını dinleme durumundadır , store'da bir degişiklik olduğunda ilgili bileşene aktarılır değişiklk sağlanır.
@@ -23,3 +25,5 @@ export const store = configureStore({
 //1. action tetiklenir
 //2. Dispatch, gelen action’ı store’da mevcut state ile birlikte reducer’a parametre geçer.
 //3. state değişir.
+
+//en son state'i sarmalamak için (provider ile) prop olarak store'u veriyoruz. bütün componentlere storedaki verilerden haberdar etmek istiyoruz çünkü. componnetlerden store'u manipüle edebiliriz bu şekilde.

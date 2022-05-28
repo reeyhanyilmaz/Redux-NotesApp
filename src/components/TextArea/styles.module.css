@@ -26,14 +26,30 @@
 .colorAndBtn{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin: 10px 10px;  
 }
 
+.colorDiv {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.color{
+  cursor: pointer;
+  border: none;
+  margin: 0 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+
 .ekleBtn {  
   padding: 5px 15px;
+  margin-right: 10px;
   border: none;
   outline: none;
   background-color: rgb(206, 162, 194);
