@@ -1,22 +1,21 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import {selectNotes} from "../../redux/notes/notesSlice"; //not'ları çektik.
-import styles from "./styles.module.css"
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectNotes } from "../../redux/notes/notesSlice"; //not'ları çektik.
+import styles from "./styles.module.css";
 
 function Content() {
-    const item = useSelector(selectNotes);
-    console.log(item);
+  const item = useSelector(selectNotes);
+  console.log(item);
   return (
-    <div>
-        {
-           item.map((not) => (
-                <div key={not.id}>
-                    {not.text}
-                </div>
-            ))
-        }
+    <div className={styles.contentDiv}>
+      {item.map((not) => (
+        <span key={not.id}>
+          <p>{not.text}</p> 
+          <button className={styles.deleteButton}>X</button>
+        </span>
+      ))}
     </div>
-  )
+  );
 }
 
 export default Content;

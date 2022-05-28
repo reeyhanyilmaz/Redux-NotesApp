@@ -1,0 +1,30 @@
+.contentDiv {
+  width: 1000px;
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: space-around;
+  gap: 30px; /*alt alta sıralandığında üstteki ve alttaki kutucuk boşluğu*/
+  margin-top: 30px;
+}
+
+.contentDiv span {
+  position: relative; /* X button ve text uyumlu oldu. */
+  padding: 15px;
+  width: 250px;
+  height: 250px;
+  border: 1px solid #333;
+  justify-self: stretch;
+}
+
+.deleteButton {
+  background-color: #fff;
+  color: grey;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
