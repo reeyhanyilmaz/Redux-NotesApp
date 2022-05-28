@@ -3,6 +3,8 @@ import styles from "./styles.module.css";
 import {changeColor } from '../../redux/color/colorSlice'; //reducer import ettik colors kullanabilmek için.
 import { useSelector, useDispatch} from "react-redux";
 import { addNote } from "../../redux/notes/notesSlice";
+import { nanoid} from "@reduxjs/toolkit";
+
 
 function TextArea() {  
 
@@ -10,6 +12,11 @@ function TextArea() {
   const dispatch = useDispatch();
 
   const changeColor = useSelector(state => state.color.colors); 
+
+  const handleAdd = () => {
+    dispatch(addNote({text: text, id: nanoid()}))
+    setText("");
+  }
   
   return (
     <div className={styles.TextAreaDiv}>
@@ -35,7 +42,7 @@ function TextArea() {
       
 
         <div className={styles.addBtnDiv}>
-          <button className={styles.ekleBtn} onClick = {() => dispatch(addNote({text: text}))}>Ekle</button>
+          <button className={styles.ekleBtn} onClick = {() => handleAdd()}>Ekle</button>
         </div>
 
         </div>
