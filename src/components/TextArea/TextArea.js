@@ -1,27 +1,26 @@
-import {useState} from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
-import {changeColor } from '../../redux/color/colorSlice'; //reducer import ettik colors kullanabilmek için.
-import { useSelector, useDispatch} from "react-redux";
+import { changeColor } from "../../redux/color/colorSlice"; //reducer import ettik colors kullanabilmek için.
+import { useSelector, useDispatch } from "react-redux";
 import { addNote } from "../../redux/notes/notesSlice";
-import { nanoid} from "@reduxjs/toolkit";
+import { nanoid } from "@reduxjs/toolkit";
 
-
-function TextArea() {  
-
-  const [text , setText] = useState("");
+function TextArea() {
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
 
-  const changeColor = useSelector(state => state.color.colors); 
+  const changeColor = useSelector((state) => state.color.colors);
 
   const handleAdd = () => {
-    dispatch(addNote({text: text, id: nanoid()}))
+    if (!text) return alert("Boş ekleme yapamazsınız!");
+    dispatch(addNote({ text: text, id: nanoid() }));
     setText("");
-  }
-  
+  };
+
   return (
     <div className={styles.TextAreaDiv}>
       <textarea
-        value={text} 
+        value={text}
         cols="30"
         rows="10"
         placeholder="Not giriniz..."
@@ -30,8 +29,8 @@ function TextArea() {
       ></textarea>
 
       <div className={styles.colorAndBtn}>
-        <div className={styles.colorDiv}>        
-          {changeColor.map(color => (
+        <div className={styles.colorDiv}>
+          {changeColor.map((color) => (
             <button
               key={color.id}
               className={styles.color}
@@ -39,13 +38,13 @@ function TextArea() {
             ></button>
           ))}
         </div>
-      
 
         <div className={styles.addBtnDiv}>
-          <button className={styles.ekleBtn} onClick = {() => handleAdd()}>Ekle</button>
+          <button className={styles.ekleBtn} onClick={() => handleAdd()}>
+            Ekle
+          </button>
         </div>
-
-        </div>
+      </div>
     </div>
   );
 }
