@@ -27,10 +27,16 @@ export const notesSlice = createSlice({
                     text,
                 }
             }
+        },
+        destroy: (state, action) => {
+            const id = action.payload;
+            //silinmek istenen id'li eleman hariç topluyoruz. item.id denk değilse id'ye filtre icine eklenecek.
+            const filterDelete = state.items.filter(item => item.id !== id);
+            state.items= filterDelete;
         }
     }
 });
 
-export const { addNote } = notesSlice.actions; //actions ile reducer içindeki fonk. çağırıyoruz.
+export const { addNote , destroy} = notesSlice.actions; //actions ile reducer içindeki fonk. çağırıyoruz.
 export default notesSlice.reducer; //store'da import ederek reducer field'a verebilmek icin.
 export const selectNotes = state => state.notes.items; //notlarımızın verilrini tutuyoruz (initial state).
