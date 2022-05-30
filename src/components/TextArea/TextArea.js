@@ -1,20 +1,28 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import { changeColor } from "../../redux/color/colorSlice"; //reducer import ettik colors kullanabilmek için.
+import { changeColor, selectColor } from "../../redux/color/colorSlice"; //reducer import ettik colors kullanabilmek için.
 import { useSelector, useDispatch } from "react-redux";
 import { addNote } from "../../redux/notes/notesSlice";
-import { nanoid } from "@reduxjs/toolkit";
 
 function TextArea() {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 
-  const changeColor = useSelector((state) => state.color.colors);
+  //ilk color'ımız
+  const startColor = useSelector((state) => state.color.startColor);
+
+  //colorSlice tüm renkleri çektik.
+  const colors = useSelector((state) => state.color.colors);
 
   const handleAdd = () => {
     if (!text) return alert("Boş ekleme yapamazsınız!");
-    dispatch(addNote({ text: text, id: nanoid() }));
+    dispatch(addNote({ text: text, color: startColor })); //color eklenince başlangıçta hangi renk content ve text olmalı onu belirliyoruz.
     setText("");
+  };
+
+  const handleColor = (code) => {
+    dispatch(firstColor(code));
+    dispatch(selectColor(code));
   };
 
   return (
@@ -30,11 +38,12 @@ function TextArea() {
 
       <div className={styles.colorAndBtn}>
         <div className={styles.colorDiv}>
-          {changeColor.map((color) => (
+          {colors.map((colorItem) => (
             <button
-              key={color.id}
+              key={colorItem.id}
               className={styles.color}
-              style={{ backgroundColor: color.code }}
+              style={{ backgroundColor: colorItem.code }}
+              onClick={() => handleColor(colorItem.code)}
             ></button>
           ))}
         </div>

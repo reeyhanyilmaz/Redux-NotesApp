@@ -34,7 +34,8 @@ export const colorSlice = createSlice({
             
         ]},
     reducers: {
-        changeColor: (state, action) => {
+        //basşlangıç rengi
+        firstColor: (state, action) => {
             state.startColor= action.payload;
         },
         selectColor: (state, action) => {
@@ -47,5 +48,5 @@ export const colorSlice = createSlice({
     }
 });
 
-export const { changeColor, selectColor} = colorSlice.actions;
+export const { firstColor, selectColor} = colorSlice.actions;
 export default colorSlice.reducer;
