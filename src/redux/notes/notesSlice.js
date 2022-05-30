@@ -5,14 +5,20 @@ export const notesSlice = createSlice({
     initialState: {
         items: localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : [{
             id: 1,
-            text: "lorem ipsum" ,     
+            text: "Redux ile uygulama geliştir" ,     
             color: "#BF86BF"       
         },
         {
             id: 2,
-            text: "lorem ipsum" ,    
-            color: "#BF86BF"          
-        }] ,
+            text: "Düzenli su içmeyi unutma!" ,    
+            color: "#A0E7E5"          
+        },
+        {
+            id: 3,
+            text: "Her gün mutlaka kodlama yap!" ,    
+            color: "#FFAEBC"          
+        },
+    ] ,
     },
     //başlangıc değerlerini ve reducerların ilgileneceği state'i alır.
     reducers: {
