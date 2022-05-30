@@ -12,9 +12,9 @@
   position: relative; /* X button ve text uyumlu oldu. */
   padding: 15px;
   width: 250px;
-  height: 250px;
-  border: 1px solid #333;
+  height: 200px;
   justify-self: stretch;
+  border-radius: 5px;
 }
 
 .deleteButton {
