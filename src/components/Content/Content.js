@@ -7,6 +7,8 @@ import styles from "./styles.module.css";
 function Content() {
   const dispatch = useDispatch();
 
+  // const colors = useSelector(state => state.color.colors)
+
   const handleDestroy = (id)=> {
     if(window.confirm("Silmek istediğine emin misin?")){
       dispatch(destroy(id));
@@ -19,7 +21,7 @@ function Content() {
   return (
     <div className={styles.contentDiv}>
       {item.map((not) => (
-        <span key={not.id}>
+        <span key={not.id} style={{backgroundColor: not.color}}>
           <p>{not.text}</p> 
           <button className={styles.deleteButton} onClick={() => handleDestroy(not.id)}>X</button>
         </span>

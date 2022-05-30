@@ -5,11 +5,13 @@ export const notesSlice = createSlice({
     initialState: {
         items : [{
             id: 1,
-            text: "lorem ipsum" ,            
+            text: "lorem ipsum" ,     
+            color: "#BF86BF"       
         },
         {
             id: 2,
-            text: "lorem ipsum" ,            
+            text: "lorem ipsum" ,    
+            color: "#BF86BF"          
         }],
     },
     //başlangıc değerlerini ve reducerların ilgileneceği state'i alır.
@@ -18,16 +20,17 @@ export const notesSlice = createSlice({
         addNote: (state, action) => {
             state.items.push(action.payload);
         },
-        //reducer state'i değiştirmeden ona gelecek payload yapılandırıyoruz. yani input ile gelecek veriler oluyor.
-        prepare: ({text}) => {
-            return  {
-                //payload componentten gelen veri, action altında gelir.
-                payload: {
-                    id: nanoid(),
-                    text,
-                }
-            }
-        },
+        // //reducer state'i değiştirmeden ona gelecek payload yapılandırıyoruz. yani input ile gelecek veriler oluyor.
+        // prepare: ({text}) => {
+        //     return  {
+        //         //payload componentten gelen veri, action altında gelir.
+        //         payload: {
+        //             id: nanoid(),
+        //             text,
+        //             color: color,
+        //         }
+        //     }
+        // },
         destroy: (state, action) => {
             const id = action.payload;
             //silinmek istenen id'li eleman hariç topluyoruz. item.id denk değilse id'ye filtre icine eklenecek.

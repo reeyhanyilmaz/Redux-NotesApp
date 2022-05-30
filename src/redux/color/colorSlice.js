@@ -3,6 +3,7 @@ import  { createSlice } from '@reduxjs/toolkit';
 export const colorSlice = createSlice({
     name: 'color', //name state'e ulaşmak istediğimizde state.name(isimlendirme ne ise)
     initialState: {
+        startColor: "#BF86BF",
         colors: [
             {
                 id: 1,
@@ -12,7 +13,7 @@ export const colorSlice = createSlice({
             {
                 id: 2,
                 code: '#BF86BF',
-                selected: false
+                selected: true
             },
             {
                 id: 3,
@@ -34,10 +35,17 @@ export const colorSlice = createSlice({
         ]},
     reducers: {
         changeColor: (state, action) => {
-            state.colors = action.payload;
+            state.startColor= action.payload;
+        },
+        selectColor: (state, action) => {
+            state.colors.forEach(color => {
+                color.selected = false;
+            });
+            const selectedColor = state.colors.find(color => color.id === action.payload);
+            selectedColor.selected = true;
         }
     }
 });
 
-export const { changeColor} = colorSlice.actions;
+export const { changeColor, selectColor} = colorSlice.actions;
 export default colorSlice.reducer;
