@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import { changeColor, selectColor } from "../../redux/color/colorSlice"; //reducer import ettik colors kullanabilmek için.
+import { firstColor, selectColor } from "../../redux/color/colorSlice"; //reducer import ettik colors kullanabilmek için.
 import { useSelector, useDispatch } from "react-redux";
 import { addNote } from "../../redux/notes/notesSlice";
 
@@ -44,7 +44,9 @@ function TextArea() {
               className={styles.color}
               style={{ backgroundColor: colorItem.code }}
               onClick={() => handleColor(colorItem.code)}
-            ></button>
+            >
+              {colorItem.selected && <span>✔</span>}
+            </button>
           ))}
         </div>
 
