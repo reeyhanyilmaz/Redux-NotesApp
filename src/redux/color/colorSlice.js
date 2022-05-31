@@ -42,10 +42,10 @@ export const colorSlice = createSlice({
             state.colors.forEach(color => {
                 color.selected = false;
             });
-            const selectedColor = state.colors.find(color => color.id === action.payload);
-            selectedColor.selected = true;
-        }
-    }
+            const selectedColor = state.colors.find(color => color.code === action.payload);
+            selectedColor.selected = !selectedColor.selected;
+        },
+    } 
 });
 
 export const { firstColor, selectColor} = colorSlice.actions;

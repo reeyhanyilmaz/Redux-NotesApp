@@ -45,7 +45,7 @@ function TextArea() {
               style={{ backgroundColor: colorItem.code }}
               onClick={() => handleColor(colorItem.code)}
             >
-              {colorItem.selected && <span>✔</span>}
+              {colorItem.selected ? <span>✔</span> : ""}
             </button>
           ))}
         </div>
