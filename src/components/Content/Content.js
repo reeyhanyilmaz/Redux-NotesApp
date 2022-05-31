@@ -1,4 +1,3 @@
-import { nanoid } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector , useDispatch} from "react-redux";
 import { selectNotes, destroy } from "../../redux/notes/notesSlice"; //not'ları çektik selecNotes ile.
