@@ -20,8 +20,8 @@ function Content() {
 
   return (
     <div className={styles.contentDiv}>
-      {item.map((not) => (
-        <span key={not.id} style={{backgroundColor: not.color}}>
+      {item.map((not,i) => (
+        <span key={i} style={{backgroundColor: not.color}}>
           <br></br>
           <p>{not.text}</p>           
           <button className={styles.deleteButton} onClick={() => handleDestroy(not.id)}>X</button>
