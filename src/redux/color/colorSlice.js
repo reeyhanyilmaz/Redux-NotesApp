@@ -43,9 +43,13 @@ export const colorSlice = createSlice({
                 color.selected = false;
             });
             const selectedColor = state.colors.find(color => color.code === action.payload);
+<<<<<<< HEAD
             //selectedColor.selected = !selectedColor.selected; veya aşağıdaki gibi
             selectedColor.selected = true; 
             
+=======
+            selectedColor.selected = !selectedColor.selected;
+>>>>>>> 74fe99fc9808cac1669a1ab9f9397f0a3cf93b5a
         },
     } 
 });
