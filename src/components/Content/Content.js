@@ -14,7 +14,12 @@ function Content() {
     }   
   }
   
-  const item = useSelector(selectNotes);
+  const item = useSelector(state => {
+    if(state.serch === ""){ //search boşsa items döndür (notlarımız yani).
+      return state.notes.items;
+    }
+    return state.notes.items.filter((not) => not.text.toLowerCase().includes(state.notes.search))
+  });
   console.log(item);
 
   return (

@@ -18,8 +18,9 @@ export const notesSlice = createSlice({
         id: nanoid(),
         text: "Her gün mutlaka kodlama yap!",
         color: "#FFAEBC",
-      },
+      },    
     ])),
+    search: "",
   },
   //başlangıc değerlerini ve reducerların ilgileneceği state'i alır.
   reducers: {
@@ -55,9 +56,12 @@ export const notesSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== id);
       localStorage.setItem("items", JSON.stringify(state.items));
     },
+    searchData: (state,action) => {
+      state.search = action.payload.toLowerCase(); //buraya da lowercase koymazsak büyük harfte arama yapmaz.
+    }
   },
 });
 
-export const { addNote, destroy } = notesSlice.actions; //actions ile reducer içindeki fonk. çağırıyoruz.
+export const { addNote, destroy, searchData } = notesSlice.actions; //actions ile reducer içindeki fonk. çağırıyoruz.
 export default notesSlice.reducer; //store'da import ederek reducer field'a verebilmek icin.
 export const selectNotes = (state) => state.notes.items; //notlarımızın verilrini tutuyoruz (initial state).
