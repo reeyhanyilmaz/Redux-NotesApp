@@ -3,7 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit"; //redux'ı kullanabilmek
 export const notesSlice = createSlice({
   name: "notes",
   initialState: {
-    items: JSON.parse(localStorage.getItem("items", [
+    items: localStorage.getItem("notes") ? JSON.parse(localStorage.getItem("notes")) : [
       {
         id: nanoid(),
         text: "Redux ile uygulama geliştir",
@@ -19,7 +19,7 @@ export const notesSlice = createSlice({
         text: "Her gün mutlaka kodlama yap!",
         color: "#FFAEBC",
       },    
-    ])),
+    ],
     search: "",
   },
   //başlangıc değerlerini ve reducerların ilgileneceği state'i alır.
