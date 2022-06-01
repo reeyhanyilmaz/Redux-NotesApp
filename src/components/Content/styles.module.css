@@ -27,4 +27,19 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+
 }
+
+.editButton {
+  background-color: #fff;
+  color: grey;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  margin: 0 40px;
+}
+
