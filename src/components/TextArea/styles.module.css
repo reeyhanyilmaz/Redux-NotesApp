@@ -38,6 +38,10 @@
   margin-left: 10px;
 }
 
+.color:hover{
+  border: 1px solid #333;
+ }
+ 
 .color{
   cursor: pointer;
   border: none;
