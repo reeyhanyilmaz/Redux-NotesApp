@@ -38,7 +38,7 @@ function TextArea() {
         id: edit.id,
         text: updateText,
         // lastEditedNote: lastEditedNote,
-        colors,
+        color: startColor,
       })
     );
     setText("");
@@ -95,6 +95,5 @@ function TextArea() {
       </div>
     </div>
   );
-}
-
+};
 export default TextArea;
