@@ -45,14 +45,14 @@
 
 @media screen and (max-width: 600px) {
   .contentDiv {
-    width: 150px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    width: 95%;
+    grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
     gap: 10px;
   }
 
   .contentDiv span {
-    width: 150px;
-    height: 150px;
+    width: 95%;
+    height: 60px;
     padding: 10px;
     font-size: 15px;
   }
