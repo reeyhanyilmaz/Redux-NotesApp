@@ -1,5 +1,7 @@
 # React-NotesApp
 Patika.dev Redux modülü "Notes App" çalışması.
+https://reyhanyilmaz-redux-notes-app.netlify.app/
+
 
 * ```redux toolkit``` ve  ```react-redux``` paketleri kullanıldı. 
 * Proje redux ```store ``` ile oluşturuldu.
