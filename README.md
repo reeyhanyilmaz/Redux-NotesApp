@@ -1,5 +1,6 @@
 # React-NotesApp
 Patika.dev Redux modülü "Notes App" çalışması.
+
 https://reyhanyilmaz-redux-notes-app.netlify.app/
 
 
