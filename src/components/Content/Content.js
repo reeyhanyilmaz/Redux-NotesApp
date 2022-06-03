@@ -1,13 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectNotes, destroy, update, saveEditedNote } from "../../redux/notes/notesSlice"; //not'ları çektik selecNotes ile.
+import {destroy, update} from "../../redux/notes/notesSlice"; //not'ları çektik selecNotes ile.
 import styles from "./styles.module.css";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 
 function Content() {
   const dispatch = useDispatch();
-
-  // const colors = useSelector(state => state.color.colors)
 
   const handleDestroy = (id) => {
     if (window.confirm("Silmek istediğine emin misin?")) {
@@ -24,34 +22,34 @@ function Content() {
       notes.text.toLowerCase().includes(state.notes.search)
     );
   });
-  console.log(items); 
+  console.log(items);
 
-  const handleUpdate = (id, text, color) => {
-    dispatch(update({ id, text, color}));
+  const handleUpdate = (id, text, color, time) => {
+    dispatch(update({ id, text, color, time }));
   };
-
 
   return (
     <div className={styles.contentDiv}>
       {items.map((not, i) => (
         <span key={i} style={{ backgroundColor: not.color }}>
+          <div className={styles.time}>{not.time}</div>
           <br></br>
           <p>{not.text}</p>
-
-          <button className={styles.editButton} onClick={() => handleUpdate(not.id, not.text, not.color)}>
-            <EditIcon />
+          <button
+            className={styles.editButton}
+            onClick={() => handleUpdate(not.id, not.text, not.color)}
+          >
+            <EditIcon color="black" />
           </button>
 
           <button
             className={styles.deleteButton}
             onClick={() => handleDestroy(not.id)}
           >
-            <DeleteIcon />
+            <DeleteIcon color="black" />
           </button>
-         
-        </span>       
+        </span>
       ))}
- {/* <p>{item.lastEditedNote}</p> */}
     </div>
   );
 }

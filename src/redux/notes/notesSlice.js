@@ -8,16 +8,19 @@ export const notesSlice = createSlice({
         id: nanoid(),
         text: "Redux ile uygulama geliştir",
         color: "#BF86BF",
+        time: "03.06.2022 11:56:55",
       },
       {
         id: nanoid(),
         text: "Düzenli su içmeyi unutma!",
         color: "#A0E7E5",
+        time: "03.06.2022 11:57:45",
       },
       {
         id: nanoid(),
         text: "Her gün mutlaka kodlama yap!",
         color: "#FFAEBC",
+        time: "03.06.2022 12:05:28",
       },    
     ],
     edit: [],
@@ -30,13 +33,13 @@ export const notesSlice = createSlice({
       // state.items.push(action.payload);
       const { text } = action.payload;
       const { color } = action.payload;
-      // const { lastEditedNote } = action.payload;
+      const { time} = action.payload;
 
       state.items.push({
         id: nanoid(),
         text: text,
         color: color,
-        // lastEditedNote: lastEditedNote,
+        time: time,
       });
 
       localStorage.setItem("items", JSON.stringify(state.items));
@@ -61,25 +64,14 @@ export const notesSlice = createSlice({
     searchData: (state,action) => {
       state.search = action.payload.toLowerCase(); //buraya da lowercase koymazsak büyük harfte arama yapmaz.
     },
-    // x: (state, action) => {
-    //   state.edit = action.payload;
-    // },
-    // update: (state, action) => {
-      
-    //   const { id, text, color, lastEditedNote } = action.payload;
-    //   state.items = state.items.map((item) =>
-    //     item.id === id ? { ...item, text, color ,lastEditedNote} : item
-    //   );
-    //   state.edit = [];
-    //   localStorage.setItem("items", JSON.stringify(state.items));
-    // }
+
     saveEditedNote:  (state, action) => {
-        const { id, text, color } = action.payload;
+        const { id, text, color, time } = action.payload;
         const editedNote = state.items.find((item) => item.id === id);
 
         editedNote.text= text;
         editedNote.color = color;
-        // editedNote.lastEditedNote = lastEditedNote;
+        editedNote.time = time;
 
         state.edit = [];
         localStorage.setItem("items", JSON.stringify(state.items));
@@ -89,7 +81,6 @@ export const notesSlice = createSlice({
           const {id }= action.payload;
           state.edit = [...state.items];
           state.edit  = state.edit.find((item) => item.id === id);
-
   },
 },
 });

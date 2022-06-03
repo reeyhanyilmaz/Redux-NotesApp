@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { firstColor, selectColor } from "../../redux/color/colorSlice"; //reducer import ettik colors kullanabilmek için.
 import { useSelector, useDispatch } from "react-redux";
-import { addNote, update, saveEditedNote } from "../../redux/notes/notesSlice";
+import { addNote, saveEditedNote } from "../../redux/notes/notesSlice";
 
 function TextArea() {
   const edit = useSelector((state) => state.notes.edit);
@@ -27,9 +27,11 @@ function TextArea() {
   const handleAdd = (e) => {
     e.preventDefault(); //ekleme yapınca (submit) sayfa yenilenmesini engellemek için.
     if (!text) return alert("Boş ekleme yapamazsınız!");
-    dispatch(addNote({ text: text, color: startColor })); //color eklenince başlangıçta hangi renk content ve text olmalı onu belirliyoruz.
+    dispatch(addNote({ text: text, color: startColor , time: date})); //color eklenince başlangıçta hangi renk content ve text olmalı onu belirliyoruz.
     setText("");
   };
+
+  const date = new Date().toLocaleString(); //toLocaleStiring diziyi string'e çevirir.
 
   //edit yapılmasını sağlayan func.
   const handleSaveEditedNoteButton = () => {
@@ -37,7 +39,7 @@ function TextArea() {
       saveEditedNote({
         id: edit.id,
         text: updateText,
-        // lastEditedNote: lastEditedNote,
+        time: date,
         color: startColor,
       })
     );
